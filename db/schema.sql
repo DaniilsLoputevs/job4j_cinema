@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS hall
 (
     id   SERIAL PRIMARY KEY,
-    name varchar(40)
+    name varchar(40) UNIQUE
 );
 CREATE TABLE IF NOT EXISTS seat
 (
