@@ -1,11 +1,13 @@
 package ru.job4j.cinema.servlet;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ru.job4j.cinema.ahelptools.ConslLog;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.job4j.cinema.model.Seat;
 import ru.job4j.cinema.store.DbStoreSeat;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,10 +15,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 
-/**
- * url-pattern: /hall.do
- */
+@WebServlet(name = "HallServlet", value = "/hall.get")
 public class AjaxQuery extends HttpServlet {
+    private static final Logger LOG = LoggerFactory.getLogger(AjaxQuery.class);
 
     /**
      * get all hall's seats. (should in future: by hall id.)
@@ -53,19 +54,23 @@ public class AjaxQuery extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        var arr = req.getParameter("seat").split("&");
-        var hall = Integer.parseInt(takeValue(arr[2]));
-        var row = Integer.parseInt(takeValue(arr[0]));
-        var column = Integer.parseInt(takeValue(arr[1]));
-        var id = Integer.parseInt(takeValue(arr[3]));
+        String[] arr = req.getParameter("seat").split("&");
 
-        ConslLog.log("arr", Arrays.toString(arr));
-        ConslLog.log("hall", hall);
-        ConslLog.log("row", row);
-        ConslLog.log("column", column);
-        ConslLog.log("id", id);
-        ConslLog.log("name", req.getParameter("name"));
-        ConslLog.log("phone", req.getParameter("phone"));
+        int hall = Integer.parseInt(takeValue(arr[2]));
+        int row = Integer.parseInt(takeValue(arr[0]));
+        int column = Integer.parseInt(takeValue(arr[1]));
+        int id = Integer.parseInt(takeValue(arr[3]));
+        String name = req.getParameter("name");
+        String phone = req.getParameter("phone");
+
+
+        LOG.info("arr: {}", Arrays.toString(arr));
+        LOG.info("hall: {}", hall);
+        LOG.info("row: {}", row);
+        LOG.info("column: {}", column);
+        LOG.info("id: {}", id);
+        LOG.info("name: {}", name);
+        LOG.info("phone: {}", phone);
 
         DbStoreSeat.instOf().save(new Seat(id, row, column, hall, true));
     }

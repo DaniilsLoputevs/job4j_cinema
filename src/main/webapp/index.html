@@ -5,58 +5,38 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.5.4/umd/popper.min.js"
+            integrity="sha512-7yA/d79yIhHPvcrSiB8S/7TyX0OxlccU8F/kuB8mHYjLlF1MInPbEohpoqfz0AILoq5hoD7lELZAYYHbyeEjag=="
             crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    <!-- Bootstrap: css & js-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
             crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
-    <title>Hello, world!</title>
 
-    <script src="ajaxLoadTable.js"></script>
+    <script src="scripts/index/loadMainTable.js"></script>
+    <script src="scripts/webUtil.js"></script>
     <script type="text/javascript">
-
-        $(document).ready(function () {
-            $("#payment-btn").click(function () {
-                var radioValue = $("input[name='seat']:checked").val();
-                if (radioValue) {
-                    localStorage.setItem("seat", radioValue);
-                    // console.log("seat: ", radioValue);
-                }
-            });
-        });
-
-        $(() => {
-            $('#payment-btn').click(() => {
-                window.location.href = getContextPath() + "/payment.html";
-            });
-        });
-
-        // refresh: 10 sec
+        // refresh: 30 sec
         setTimeout(function () {
-            window.location.href = getContextPath() + "/index.html";
-        }, 10000);
-
+            window.location.href = getContextPath();
+        }, 30000);
     </script>
 
+    <title>Job4j Cinema</title>
 </head>
 <body>
 
 <div class="container">
     <div class="row pt-3">
-        <h4>
-            Бронирование месте на сеанс
-        </h4>
+
+        <h4>Бронирование месте на сеанс</h4>
+
         <table id="table" class="table table-bordered">
             <thead>
             <tr>
@@ -66,11 +46,13 @@
                 <th>3</th>
             </tr>
             </thead>
+            <tbody id="table-body">
+            <!-- script insert code here -->
+            </tbody>
         </table>
     </div>
     <div class="row float-right">
         <button id="payment-btn" type="button" class="btn btn-success">Оплатить</button>
-        <a href="payment.html">payment</a>
     </div>
 </div>
 </body>

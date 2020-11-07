@@ -26,3 +26,7 @@ hs_err_pid*
 /.idea/
 /target/
 /job4j_cinema.iml
+/out/
+
+# Manual experiment class
+/src/main/java/ru/job4j/cinema/ahelptools/MainExp.java

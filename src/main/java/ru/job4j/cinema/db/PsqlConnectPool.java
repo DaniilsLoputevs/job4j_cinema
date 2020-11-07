@@ -1,7 +1,6 @@
 package ru.job4j.cinema.db;
 
 import org.apache.commons.dbcp2.BasicDataSource;
-import ru.job4j.cinema.ahelptools.ConslLog;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

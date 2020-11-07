@@ -7,14 +7,4 @@
 
   <display-name>Archetype Created Web Application</display-name>
 
-  <!-- ajax script Servlets-->
-  <servlet>
-    <servlet-name>HallServlet</servlet-name>
-    <servlet-class>ru.job4j.cinema.servlet.AjaxQuery</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>HallServlet</servlet-name>
-    <url-pattern>/hall.do</url-pattern>
-  </servlet-mapping>
-
 </web-app>
