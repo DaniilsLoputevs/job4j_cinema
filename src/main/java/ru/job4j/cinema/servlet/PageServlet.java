@@ -1,6 +1,5 @@
 package ru.job4j.cinema.servlet;
 
-import ru.job4j.cinema.ahelptools.ConslLog;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -23,11 +22,6 @@ public class PageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setHeader("Access-Control-Allow-Origin", "*");
-
-        ConslLog.log("###  ###");
-
-
-        ConslLog.log("###  ###");
 
         req.getRequestDispatcher("payment.html").forward(req, resp);
     }
